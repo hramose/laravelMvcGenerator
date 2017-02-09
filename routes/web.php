@@ -37,7 +37,10 @@ Route::post('register', [
 Route::get('/', function () {
     return view('welcome');
 });*/
-
+//Route::get('admin/user', 'admin\UserController@index');
+//Route::get('admin/user/form/{id}', 'admin\UserController@form')->where('id', '[0-9]+');
+//Route::resource('proyectosaperturas', 'ProyectosAperturasController');
+//Route::resource('userType', 'admin\UserTypeController');
 
 
 
@@ -49,16 +52,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-//Route::get('admin/user', 'admin\UserController@index');
-
-//Route::get('admin/user/form/{id}', 'admin\UserController@form')->where('id', '[0-9]+');
-
 Route::resource('user', 'UserController');
-
-Route::resource('proyectosaperturas', 'ProyectosAperturasController');
-
-Route::resource('userType', 'admin\UserTypeController');
-
 
 Route::get('/generador', 'GeneradorController@index');
 Route::post('/generador/find_table', 'GeneradorController@find_table');

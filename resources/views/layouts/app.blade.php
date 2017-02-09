@@ -78,11 +78,8 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/user') }}">Usuarios</a></li>
-                                    <li><a href="{{ url('/userType') }}">Tipos</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ url('proyectosaperturas') }}">Proyectos</a></li>
-                            <li><a href="{{ url('admin/panel') }}">Panel</a></li>
                             @endif
                         </ul>
 
