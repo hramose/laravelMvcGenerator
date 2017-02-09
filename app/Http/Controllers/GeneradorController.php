@@ -43,19 +43,12 @@ class GeneradorController extends Controller
                 . "AND table_name = '".$nombre_tabla."' "; 
             
             $res = DB::select($query);
-            
-            /*foreach ($res as $value) {
-                foreach ($value as $i => $val) {
-                    echo "<br>".$i."---".$val."<br>";
-                }
-            }*/
             /*
              * devuelve la consulta:
                 ->toSql();
              */
-            //var_dump($res);
-            
-            //dd($res);
+            //var_dump($res);            
+            //dd($res);            
             
             return view('generador.columnas', 
                     ['columnas' => $res,
@@ -64,7 +57,6 @@ class GeneradorController extends Controller
                     ]);
         }
         
-        dd($request);
     }
     
     public function generar_archivo(Request $request) {
@@ -89,7 +81,9 @@ class GeneradorController extends Controller
             $this->generarShow($nombre_tabla, $campos, $nombre_bd);
         }
         
-        dd($request);
+        $this->index();
+        
+        //dd($request);
         
     }
     
