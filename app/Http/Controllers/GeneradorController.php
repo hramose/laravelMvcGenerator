@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Redirect, Session, DB, Auth;
+use Session, DB, Auth;
 
 
 class GeneradorController extends Controller
 {
-    private $nombre_bd = '';
-    private $nombre_tabla = '';
     
     public function __construct()
     {
@@ -23,8 +21,8 @@ class GeneradorController extends Controller
      */
     public function index()
     {
-        $datos['nombre_bd'] = $this->nombre_bd;
-        $datos['nombre_tabla']=$this->nombre_tabla;
+        $datos['nombre_bd'] = '';
+        $datos['nombre_tabla'] = '';
         return view('generador/tablas')->with($datos);
     }
     
@@ -86,13 +84,15 @@ class GeneradorController extends Controller
             $this->generarShow($nombre_tabla, $campos, $nombre_bd);
         }
         
-        $this->nombre_bd = $nombre_bd;
-        $this->nombre_tabla = $nombre_tabla;
         // redirect
         Session::flash('message', 'La base de datos: '.$nombre_bd.' '.$nombre_tabla.
                 ' fué creado satisfactoriamente!');
-        return $this->index();
-        //return Redirect::to('/generador');
+        
+        $datos['nombre_bd'] = $nombre_bd;
+        $datos['nombre_tabla'] = $nombre_tabla;
+        
+        //return view('generador/tablas')->with($datos);
+        return redirect('generador');
     }
     
         
@@ -175,10 +175,10 @@ namespace App\Http\Controllers;
 
 use App\\'.$nombre_forma.';
 use App\Http\Controllers\Controller;
-use Validator, Input, Redirect, View, Session, Hash;
+use Validator, Input, Redirect, View, Session;
 #use Illuminate\Http\Request;
 
-class '.$nombre_forma.' extends Controller
+class '.$nombre_forma.'Controller extends Controller
 {
     /**
      * Instantiate a new controller instance.
