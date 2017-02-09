@@ -27,7 +27,7 @@
                 <label for="nombre_bd" class="col-md-4 control-label">Nombre Base de datos</label>
 
                 <div class="col-md-6">
-                    <input id="nombre_bd" type="text" class="form-control" name="nombre_bd" value="{{ old('nombre_bd') }}" autofocus>
+                    <input id="nombre_bd" type="text" class="form-control" name="nombre_bd" value="{{ $nombre_bd }}" autofocus>
 
                     @if ($errors->has('nombre_bd'))
                     <span class="help-block">
@@ -41,7 +41,7 @@
                 <label for="nombre_tabla" class="col-md-4 control-label">Nombre Tabla</label>
 
                 <div class="col-md-6">
-                    <input id="nombre_tabla" type="text" class="form-control" name="nombre_tabla" value="{{ old('nombre_tabla') }}" autofocus>
+                    <input id="nombre_tabla" type="text" class="form-control" name="nombre_tabla" value="{{ $nombre_tabla }}" autofocus>
 
                     @if ($errors->has('nombre_tabla'))
                     <span class="help-block">

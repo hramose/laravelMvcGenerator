@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Redirect, Session, DB, Auth;
 
 
 class GeneradorController extends Controller
 {
+    private $nombre_bd = '';
+    private $nombre_tabla = '';
+    
     public function __construct()
     {
         //$this->middleware('auth');
@@ -20,7 +23,9 @@ class GeneradorController extends Controller
      */
     public function index()
     {
-        return view('generador/tablas');
+        $datos['nombre_bd'] = $this->nombre_bd;
+        $datos['nombre_tabla']=$this->nombre_tabla;
+        return view('generador/tablas')->with($datos);
     }
     
     public function find_table(Request $request) {
@@ -81,10 +86,13 @@ class GeneradorController extends Controller
             $this->generarShow($nombre_tabla, $campos, $nombre_bd);
         }
         
-        $this->index();
-        
-        //dd($request);
-        
+        $this->nombre_bd = $nombre_bd;
+        $this->nombre_tabla = $nombre_tabla;
+        // redirect
+        Session::flash('message', 'La base de datos: '.$nombre_bd.' '.$nombre_tabla.
+                ' fué creado satisfactoriamente!');
+        return $this->index();
+        //return Redirect::to('/generador');
     }
     
         
@@ -255,7 +263,7 @@ class '.$nombre_forma.' extends Controller
             $datos->save();
 
             // redirect
-            Session::flash(\'message\', \''.$pal1.' creado stisfactoriamente!\');
+            Session::flash(\'message\', \''.$pal1.' creado satisfactoriamente!\');
             return Redirect::to(\''.strtolower($nombre_forma).'\');
         }
     }
@@ -571,7 +579,7 @@ class '.$nombre_forma.' extends Controller
                 <label for="'.$val.'" class="col-md-4 control-label">'.$val.'</label>
 
                 <div class="col-md-6">
-                    <input id="'.$val.'" type="text" class="form-control" name="'.$val.'" value="{{ old(\''.$val.'\') }}" autofocus>
+                    <input id="'.$val.'" type="text" class="form-control" name="'.$val.'" value="{{ $datos->'.$val.' }}" autofocus>
 
                     @if ($errors->has(\''.$val.'\'))
                     <span class="help-block">

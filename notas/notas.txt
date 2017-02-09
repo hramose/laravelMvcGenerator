@@ -25,3 +25,18 @@ public function boot()
 
 //agregar la rutas
 $ php artisan make:auth 
+
+
+
+
+
+
+---------------------
+PERMISOS XAMPP:
+
+chmod 755 $(find /yourfolder -type d)
+chmod 644 $(find /yourfolder -type f)
+
+click derecho (sobre htdocs XAMPP)->obtener informacion-> abrir candado
+->dar permisos de lectura y escritura a todos-> cerrar candado-> listo! 
+
