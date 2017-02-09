@@ -1,0 +1,27 @@
+
+
+
+# GENERADOR DE MODELO BASE DE DATOS
+$ composer require ignasbernotas/laravel-model-generator --dev
+
+#Descarg la aplicacion y procedo a instalar composer para las dependencias
+$ composer install 
+
+// Agregar BD
+$ php artisan migrate
+-----------------------
+# Nota: se migra la base de datos y da error 1071 tamaño de un campo
+# ha que modificar app/Providers/AppServiceProvider.php
+# agregar:
+use Illuminate\Support\Facades\Schema;
+...
+public function boot()
+    {
+        //esta linea
+        Schema::defaultStringLength(191);
+    }
+
+-----------------------
+
+//agregar la rutas
+$ php artisan make:auth 

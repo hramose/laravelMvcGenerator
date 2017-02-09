@@ -1,0 +1,31 @@
+body{
+    background-color: #1b1b1b;
+    background-image: url(../../public/img/bg-sin.jpg);
+    color: #444;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+}
+
+
+.contenedor{
+    /*max-width:550px;*/
+    
+    background: transparent url(../../public/img/login-bg.png) repeat;
+    border:7px solid rgba(255, 255, 255, 0.31);
+    -webkit-background-clip: padding-box; /* for Safari */
+    -moz-background-clip: padding-box; /* for old Firefox */
+    -o-background-clip: padding-box; /* for old Firefox */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 50px 10px 10px 20px;
+    
+}
+
+.contenedor #email {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-delay: 1.2s;
+  -webkit-animation-iteration-count: 1;
+}
