@@ -1,0 +1,2 @@
+# laravelMvcGenerator
+Laravel generador MVC
